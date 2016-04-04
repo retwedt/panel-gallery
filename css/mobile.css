@@ -1,0 +1,297 @@
+/* Layout Demos - Columns */
+
+/* DEFAULT SETTINGS */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+h1 {
+  text-align: center;
+  font-size: 2.0em;
+}
+h2 {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0px 0px 6px 0px;
+}
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+header {
+  width: 100%;
+  padding: 10px;
+  min-height: 20%;
+  text-align: center;
+  border: 2px solid blue;
+}
+section {
+  width: 100%;
+  height: 80%;
+  border: 2px solid blue;
+}
+
+
+/* PANELS */
+.content {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid red;
+}
+.panel {
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  position: relative;
+  border: 2px solid purple;
+}
+/* vertical text for the panel title */
+.panel-title {
+  font-size: 42px;
+  width: 160px;
+  position: absolute;
+  bottom: 64px;
+  left: -48px;
+  
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+  transform: rotate(270deg);
+}
+.default {
+  width: 33.33%;
+
+  -webkit-transition: width 0.5s ease-out;
+  -moz-transition: width 0.5s ease-out;
+  -o-transition: width 0.5s ease-out;
+  transition: width 0.5s ease-out;
+}
+.default:hover {
+  cursor: pointer;
+}
+.open {
+  width: 80%;
+
+  -webkit-transition: width 0.5s ease-out;
+  -moz-transition: width 0.5s ease-out;
+  -o-transition: width 0.5s ease-out;
+  transition: width 0.5s ease-out;
+}
+.closed {
+  width: 10%;
+
+  -webkit-transition: width 0.5s ease-out;
+  -moz-transition: width 0.5s ease-out;
+  -o-transition: width 0.5s ease-out;
+  transition: width 0.5s ease-out;
+}
+.closed:hover {
+  cursor: pointer;
+}
+
+
+/* GALLERY */
+.gallery {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border: 2px solid pink;
+}
+.gallery-menu {
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid orange;
+}
+.gallery-text {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  overflow-y: scroll;
+  border: 2px solid orange;
+}
+.inactive {
+  visibility:hidden;
+  opacity:0;
+
+  -webkit-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -moz-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -o-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+}
+.active {
+  visibility:visible;
+  opacity:1;
+
+  -webkit-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -moz-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -o-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  -o-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+.button {
+  width: 46%;
+  height: 120px;
+  border: 1px solid black;
+  margin: 1%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+/* CLOSE PANELS */
+.close-panels {
+  font-size: 24px;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  color: #000000;
+  z-index: 1;
+}
+.close-panels:hover {
+  cursor: pointer;
+  color: #7A7A7A;
+}
+
+
+
+
+
+/* NAVIGATION MENU FOR DESKTOP */
+nav {
+  z-index: 500;
+  background-color: white;
+  text-align: center;
+}
+nav a {
+  padding: 4px;
+  color: #5D2D76;
+  white-space: nowrap; /* prevent word wrap on mobile menu */
+}
+nav a:hover {
+  color: #8395C7;
+}
+
+
+
+
+
+
+
+/* Media Queries for responsive layouts */
+@media screen and (max-width: 360px) {
+  .gallery-menu {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-text {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .panel-title {
+    font-size: 16px;
+    bottom: 74px;
+    left: -72px;
+  }
+  .active {
+    overflow-y: scroll;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 640px) {
+  .gallery-menu {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-text {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .panel-title {
+    font-size: 24px;
+    bottom: 74px;
+    left: -64px;
+  }
+  .active {
+    overflow-y: scroll;
+  }
+}
+/* mobile nav */
+@media screen and (max-width: 640px) {
+  /* Show menu on hover */
+  .nav-menu {
+    width: 100px;
+    height: 30px;
+    background-color: #3F3F3F;
+    overflow: hidden;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .nav-menu:hover {
+    background-color: #5C5C61;
+    overflow: visible;
+  }
+  .nav-menu:hover > nav {
+    opacity: 1.0;
+    height: auto;
+  }
+  nav:hover {
+    opacity: 1.0;
+  }
+  nav {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.0;
+    padding: 10px;
+    background-color: white;
+    text-align: left;
+    border: 2px solid lightblue;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .gallery-text {
+    overflow-y: hidden;
+  }
+}
+/* for short screens/landscape view */
+@media screen and (max-height: 600px) and (min-width: 640px) {
+  .gallery-menu {
+    overflow-y: scroll;
+  }
+  .gallery-text {
+    overflow-y: scroll;
+  }
+}

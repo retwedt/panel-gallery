@@ -1,0 +1,486 @@
+/* RESPONSIVE PANEL GALLERY DEMO */
+
+/* DEFAULT SETTINGS */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+h1 {
+  text-align: center;
+  font-size: 2.0em;
+  margin: 0;
+  padding: 10px;
+}
+h2 {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0px 0px 6px 0px;
+}
+#wrap {
+  width: 100%;
+  height: 100%;
+}
+header {
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+}
+section {
+  width: 100%;
+  background-color: #D5DAE1;
+  padding: 4px 10px;
+}
+
+
+/* NAVIGATION MENU FOR DESKTOP */
+nav {
+  z-index: 500;
+  background-color: white;
+  text-align: center;
+}
+nav a {
+  padding: 4px;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap; /* prevent word wrap on mobile menu */
+}
+nav a:hover {
+  color: #555C9D;
+}
+.bars {
+  display: none;
+}
+
+
+/* PANELS */
+.content {
+  width: 80%;
+  height: 520px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+.panel {
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  position: relative;
+  border: 2px solid white;
+}
+#panel-1 {
+  background-image: url("../img/fruits-and-veggies.jpg");
+  background-position: 0px 0px;
+}
+#panel-2 {
+  background-image: url("../img/baked-goods.jpg");
+  background-position: 0px 0px;
+}
+#panel-3 {
+  background-image: url("../img/junk-food.jpg");
+  background-position: 0px 0px;
+  float: right;
+}
+/* vertical text for the panel title */
+.panel-title {
+  font-size: 42px;
+  width: 160px;
+  position: absolute;
+  bottom: 64px;
+  left: -48px;
+  z-index: 100;
+  font-weight: bold;
+  color: #161717;
+  text-shadow: 1px 2px 1px #B6B6C0;
+  /* disable user select */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+  /* rotate 90 degrees */
+  -ms-transform: rotate(270deg); /* IE 9 */
+  -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+  transform: rotate(270deg);
+}
+.default {
+  width: 33.33%;
+  /* transition */
+  -webkit-transition: width 0.75s ease-out;
+  -moz-transition: width 0.75s ease-out;
+  -o-transition: width 0.75s ease-out;
+  transition: width 0.75s ease-out;
+}
+.default:hover {
+  cursor: pointer;
+}
+.default:hover .panel-title {
+  color: #000000;
+  text-shadow: 1px 2px 2px #E9E9F1;
+}
+.open {
+  width: 80%;
+  /* desaturate image */
+ -webkit-filter: grayscale(35%);
+  filter: grayscale(35%);
+  /* transition */
+  -webkit-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  -moz-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  -o-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+}
+.closed {
+  width: 10%;
+  /* desaturate image */
+ -webkit-filter: grayscale(65%);
+  filter: grayscale(65%);
+  /* transition */
+  -webkit-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  -moz-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  -o-transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+  transition: width 0.75s ease-out,  -webkit-filter 0.75s ease-out;
+}
+.closed:hover {
+  cursor: pointer;
+}
+.closed:hover .panel-title {
+  color: #000000;
+  text-shadow: 1px 2px 2px #E9E9F1;
+}
+
+
+/* GALLERY */
+.gallery {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: rgba(220, 220, 220, 0.85);
+  /* shadows */
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+}
+.gallery-menu {
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #B3B3B3;
+}
+.gallery-text {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 16px;
+  text-align: justify;
+  overflow-y: scroll;
+  border: 1px solid #B3B3B3;
+}
+.inactive {
+  visibility:hidden;
+  opacity:0;
+  /* transition */
+  -webkit-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -moz-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -o-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+}
+.active {
+  visibility:visible;
+  opacity:1;
+  /* transition */
+  -webkit-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -moz-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  -o-transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  transition: visibility 0.5s ease-out, opacity 0.5s ease-out;
+  /* delay */
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  -o-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+.button {
+  width: 44%;
+  max-width: 96px;
+  height: 120px;
+  color: white;
+  text-shadow: 2px 2px 4px #2D2D2D;
+  margin: 1%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  /* background image */
+  -webkit-background-size: auto 100%;
+  -moz-background-size: auto 100%;
+  background-size: auto 100%;
+  /* rounded corners */
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  /* shadows */
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  /* disable user select */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+  /* transition */
+  -webkit-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  -moz-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  -o-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+}
+.button:hover {
+  cursor: pointer;
+  /* background image */
+  -webkit-background-size: auto 104%;
+  -moz-background-size: auto 104%;
+  background-size: auto 104%;
+  /* transition */
+  -webkit-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  -moz-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  -o-transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+  transition: background-size 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+
+/* SELECTED BUTTON */
+.desaturate{
+ -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-color: #DADDE1;
+}
+.saturate{
+ -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  background-color: white;
+}
+
+
+/* CLOSE PANELS */
+.close-panels {
+  font-size: 24px;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  color: white;
+  text-shadow: 2px 2px 4px #2D2D2D;
+  z-index: 1;
+    /* disable user select */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+.close-panels:hover {
+  cursor: pointer;
+  color: #C3C9CD;
+}
+
+
+/* Custom CSS Scrollbar applied to any div inside of .panel
+   from https://css-tricks.com/custom-scrollbars-in-webkit/ */
+div.panel *::-webkit-scrollbar {
+  width: 0.5em;
+}
+div.panel *::-webkit-scrollbar-thumb {
+  background: #708090;
+}
+div.panel *::-webkit-scrollbar-track {
+  background: #B8C0C8;
+}
+
+
+/* Media Queries for responsive layouts */
+@media screen and (max-width: 360px) {
+  /* Show menu on hover */
+  .nav-menu {
+    width: 136px;
+    height: 32px;
+    overflow: hidden;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .nav-menu:hover {
+    overflow: visible;
+  }
+  .bars {
+    width: 24px;
+    height: 2px;
+    margin: 4px 6px 4px 106px;
+    display: block;
+    background-color: black;
+  }
+  .nav-menu:hover .bars {
+    background-color: #555C9D;
+  }
+  .nav-menu:hover > nav {
+    opacity: 1.0;
+    height: auto;
+  }
+  nav:hover {
+    opacity: 1.0;
+  }
+  nav {
+    position: absolute;
+    top: 24px;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.0;
+    padding: 10px;
+    background-color: white;
+    text-align: left;
+    /* rounded corners */
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    /* transition */
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    /* shadows */
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  }
+  /* gallery */
+  .gallery-menu {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-text {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .panel-title {
+    font-size: 16px;
+    bottom: 74px;
+    left: -72px;
+  }
+  .active {
+    overflow-y: scroll;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 640px) {
+  /* Show menu on hover */
+  .nav-menu {
+    width: 136px;
+    height: 32px;
+    overflow: hidden;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .nav-menu:hover {
+    overflow: visible;
+  }
+  .bars {
+    width: 24px;
+    height: 2px;
+    margin: 4px 6px 4px 106px;
+    display: block;
+    background-color: black;
+  }
+  .nav-menu:hover .bars {
+    background-color: #555C9D;
+  }
+  .nav-menu:hover > nav {
+    opacity: 1.0;
+    height: auto;
+  }
+  nav:hover {
+    opacity: 1.0;
+  }
+  nav {
+    position: absolute;
+    top: 24px;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.0;
+    padding: 10px;
+    background-color: white;
+    text-align: left;
+    /* rounded corners */
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    /* transition */
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    /* shadows */
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5);
+  }
+  /* gallery */
+  .gallery-menu {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .gallery-text {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .panel-title {
+    font-size: 24px;
+    bottom: 74px;
+    left: -64px;
+  }
+  .active {
+    overflow-y: scroll;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 960px) {
+  .gallery-menu {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .gallery-text {
+    width: 100%;
+    height: auto;
+    overflow-y: hidden;
+  }
+  .panel-title {
+    font-size: 24px;
+    bottom: 74px;
+    left: -64px;
+  }
+  .active {
+    overflow-y: scroll;
+  }
+}
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  .gallery-menu {
+    overflow-y: scroll;
+  }
+  .gallery-text {
+    overflow-y: scroll;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .gallery-menu {
+    overflow-y: hidden;
+  }
+  .gallery-text {
+    overflow-y: hidden;
+  }
+}
